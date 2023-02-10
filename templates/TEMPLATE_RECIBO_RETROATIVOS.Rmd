@@ -1,0 +1,65 @@
+---
+title: "RECIBO REEMBOLSO DE DESLOCAMENTO"
+subtitle: "Nº:"
+output:
+  word_document:
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 5
+    reference_docx: template_image.docx
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(lubridate)
+library(flextable)
+source("FUNCTIONS/number2word_portuguese_function.R")
+```
+
+
+
+  Eu **`r nome`**, portador do CPF:  **`r bank_info[12]`** declaro que, no período de Setembro/2021 a Agosto/2022,  recebi da "" a quantia de R$ **`r total` (`r numbers2words(total)`)**, referente ao reembolso de despesas de deslocamentos, correspondente às atividades realizadas no Projeto SEBRAE, conforme descritivo abaixo, e, para clareza, firmo o presente RECIBO.
+
+<br/>
+
+<br/>
+
+```{r table1, ft.split=TRUE, echo=FALSE, warning=FALSE}
+
+data<-events %>% 
+  flextable() %>%
+  add_header_row(values = codigo, colwidths = 3) %>% 
+  add_footer_lines(paste("valor total: R$",total, sep = " ")) %>%
+  autofit() %>% 
+  theme_vanilla() %>% 
+  fit_to_width(7.5) %>% 
+  fontsize(size = 9, part = "all") %>% 
+  align(align = "center", part = "all")
+
+data
+```
+
+<br/>
+
+<br/>
+
+<p style="text-align:center">
+
+São Paulo/SP, **`r format(as.Date(Sys.time()), format = "%d/%m/%Y")`**  
+
+<br/>
+
+<br/>
+
+**_______________________**
+  
+**Assinatura do Consultor**      
+
+**`r nome`**   
+
+</p>
+
+
+

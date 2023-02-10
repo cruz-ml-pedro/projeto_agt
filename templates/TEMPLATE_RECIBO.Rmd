@@ -1,0 +1,119 @@
+---
+output:
+  word_document:
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 5
+    reference_docx: template_image.docx
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(lubridate)
+library(knitr)
+source("FUNCTIONS/number2word_portuguese_function.R")
+source("FUNCTIONS/recibo_number_function.R")
+
+
+sum_par <- vector("numeric")
+for (i in 1:nrow(report_complet)) {
+  
+ sum_par[[i]] <- sum(report_complet[[5]][[i]][,3])
+  
+}
+#---------------------------------------------
+sum_total <- sum(sum_par)
+#-----------------------------------------------------------------
+
+total_function <- word(sum_total, 1:2, sep = "\\.") 
+  
+valor_1 <- numbers2words(as.numeric(total_function[[1]])) %>% 
+        stringi::stri_encode( from = 'UTF-8', to = 'UTF-8')
+
+#não esta reconhecendo a diferença entre 3 e 03
+decimais <- c("1","2", "3", "4", "5", "6", "7", "8", "9")
+
+if(is.na(total_function[[2]])){
+  
+  valor_2 <- ""
+  
+} else if (total_function[[2]] %in% decimais) {
+  
+centavos_decimais  <- as.numeric(total_function[[2]]) * 10
+
+valor_2 <- stringi::stri_encode(paste("e", numbers2words(centavos_decimais), "centavos", sep = " "), from = 'UTF-8', to = 'UTF-8')
+
+}else{
+  
+
+valor_2 <- stringi::stri_encode(paste("e", numbers2words(as.numeric(total_function[[2]])), "centavos", sep = " "), from = 'UTF-8', to = 'UTF-8')  
+  
+  
+}
+
+#--------------------------------------------------------------
+total_texto <-  sum_total %>% 
+  str_replace("\\.", ",") 
+
+```
+
+# RECIBO REEMBOLSO DE DESLOCAMENTO
+
+# Nº: `r numero_parcelas(nome, as.character(codigo))`
+
+
+  Eu **`r nome`**, portador do CPF:  **`r bank_info[12]`** declaro que, no período de Setembro/2021 a Agosto/2022,  recebi da "" a quantia de R$: **`r total_texto`** (`r valor_1` reais `r valor_2`), referente ao reembolso de despesas de deslocamentos, correspondente às atividades realizadas no Projeto SEBRAE, produto **`r codigo`**, conforme descritivo abaixo, e, para clareza, firmo o presente RECIBO.
+
+<br/>
+
+<br/>
+
+```{r table1, echo=FALSE, message=FALSE, warning=FALSE, ft.split=TRUE, results='asis'}
+
+for (i in 1: nrow(report_complet)) {
+  
+  
+   quinzena <- report_complet[[4]][[i]]
+  #
+   mes <- report_complet[[3]][[i]] %>% 
+    format("%B-%Y")
+  #
+   events <- report_complet[[5]][[i]] %>% 
+    select(Data,Km, Total)#selecionando as colunas de interesse
+  #
+   total <- sum(events$Total)
+  
+  
+print(knitr::kable(events,
+                   digits = 2,
+                   align = "c",
+                   caption = glue::glue(quinzena,"º","Quinzena","de",mes, "Total R$:",total, .sep = " ")))
+
+}
+
+
+```
+
+<br/>
+
+<br/>
+
+<p style="text-align:center">
+
+São Paulo/SP, **`r format(as.Date(Sys.time()), format = "%d/%m/%Y")`**  
+
+<br/>
+
+<br/>
+
+**_______________________**
+  
+**Assinatura do Consultor**      
+
+**`r nome`**   
+
+</p>
+
+

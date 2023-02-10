@@ -1,0 +1,94 @@
+---
+title: "`r bank_info[1]`"
+subtitle: "RELATÓRIO DE ANDAMENTO MENSAL"
+output: 
+  word_document:
+    reference_docx: template_image.docx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(lubridate)
+library(flextable)
+source("FUNCTIONS/number2word_portuguese_function.R")
+```
+
+# 1.	INFORMAÇÕES GERAIS
+Período: 1 a `r format(ceiling_date(data_rel, "month")%m-% days(1) ,format = "%d") ` de `r  format(data_rel,format = "%B/%Y") `
+ 
+ Parcela N°: `r parcela` (Número de faturamentos já realizados para o produto ao qual este relatório se    refere, conforme constar em seu controle pessoal) 
+ 
+ Valor:  **`r paste("R$",total,sep = " ")`** (`r stringi::stri_encode(numbers2words(total),from = 'UTF-8', to = 'UTF-8')`) 
+  
+  Projeto: FESPSP – SEBRAE – Consórcio Empreendedor – `r produto`.  
+  
+# 2.	ATIVIDADES DESENVOLVIDAS NO PERÍODO
+ Durante o período de referência deste relatório, foram desenvolvidas ações de aplicação do   `r produto`, conforme mostrado no quadro abaixo:
+
+
+```{r table1, ft.split=TRUE, echo=FALSE, warning=FALSE}
+data<-df %>% 
+  flextable() %>%
+  add_header_row(values = produto, colwidths = 6) %>% 
+  add_header_lines(values = nome, top = TRUE) %>% 
+  add_footer_lines(paste("valor total R$:",total, sep = " ")) %>%
+  autofit() %>% 
+  theme_vanilla() %>% 
+  fit_to_width(7.5) %>% 
+  fontsize(size = 9, part = "all") %>% 
+  align(align = "center", part = "all")
+
+data
+```
+
+# 3.	ANEXOS  
+
+Os anexos foram inseridos no Sistema de Gestão.   
+
+# 4.	RELAÇÃO DE PROFISSIONAIS ENVOLVIDOS
+
+ Responsável pela empresa `r bank_info[1]`, o Consultor **`r nome`**.  
+
+# 5.	OBSERVAÇÃO E DISPOSIÇÕES FINAIS
+ Inserir eventuais observações.
+
+# 6.	DADOS BANCÁRIOS DA EMPRESA:  
+
+
+  Você é MEI?: **`r bank_info[4]`**
+
+  TIPO DE CONTA:  **`r bank_info[3]`** (PF apenas se for MEI e PJ se não for)
+  
+  BANCO - N DO BANCO:  **`r bank_info[5]`** 
+  
+  AG: **`r bank_info[6]` - `r bank_info[7]`**  (NÃO ESQUECER DE INDICAR O DÍGITO, CASO TENHA)  
+  
+  OPERAÇÃO DA CONTA: **`r bank_info[8]`** (EX: Conta corrente; Conta Poupança)  
+  
+  NÚMERO DA CONTA E DÍGITO (Se houver): **`r bank_info[9]` - `r bank_info[10]`**  
+  
+  CNPJ: **`r bank_info[11]`**  
+  
+  CPF: **`r bank_info[12]`**
+  
+ <br/>  
+ 
+  MUNICÍPIO SEDE DA EMPRESA/SP, **`r format(as.Date(Sys.time()), format = "%d/%m/%Y")`**   
+  
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+**_______________________**
+  
+**Assinatura do Consultor**      
+
+**`r nome`**   
+
+__Endereço__, __telefone__, **`r bank_info[2]`** 
+

@@ -1,0 +1,43 @@
+---
+title: "email_template"
+output: blastula::blastula_email
+---
+
+```{r, include=FALSE}
+library(lubridate)
+```
+
+
+<center>
+<h1 style = "color: #478dff; font-family: Copperplate"> Recibo deslocamento `r format(rollback(Sys.Date()),format = "%B %Y")` </h1>
+</center>
+
+Prezado(a), 
+
+Espero que esta mensagem lhe encontre bem. 
+
+
+
+Primeiramente, gostaria de avisá-lo que, de agora em diante, será requerida a sua assinatura em recibos referentes aos reembolsos de despesas de deslocamento pagos pela .   
+
+Neste(s) primeiro(s) documento(s), você encontrará a relação de todos os reembolsos já efetuados em seu nome, desde o início do projeto até a 1ª Quinzena de setembro/22. 
+Assim, por se tratarem de documentos extensos, onde está registrado um grande volume de informações, **peço que a revisão deste(s) seja feita de forma cautelosa, a fim de que qualquer inconsistência com o valor recebido, seja apontada.**
+
+
+Desde já, agradeço a atenção. 
+
+Aguardo recibo(s) assinado(s). 
+
+
+
+Atenciosamente,
+
+
+Ágata Lima 
+
+Estagiária Administrativa
+
+Consórcio Empreendedor - SEBRAE
+
+
+

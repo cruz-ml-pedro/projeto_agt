@@ -1,0 +1,83 @@
+---
+title: "email_template"
+output: blastula::blastula_email
+---
+
+```{r, include=FALSE}
+library(lubridate)
+```
+
+
+<center>
+<h1 style = "color: #478dff; font-family: Copperplate"> Faturamento `r format(as.Date(rollback(Sys.Date())),format = "%B %Y")` </h1>
+</center>
+
+Olá 
+
+Espero que esteja bem.
+ 
+Sensível às dificuldades reportadas pelos consultores da equipe, a Diretoria da, por sua liberalidade exclusiva e em caráter excepcional, autoriza o faturamento das atividades executadas no mês de `r format(rollback(Sys.Date()), format = "%B %Y")`, no âmbito do Contrato firmado entre a vossa empresa e a Sociologia e Política.
+ 
+<h0 style = "color: #ff0000;"> OBS: Os Relatórios de Atividades, bem como as Notas Fiscais, devem ser preenchidos/emitidas **UM/UMA PARA CADA PRODUTO**.</h0>
+ 
+**1. Relatórios de Atividades**
+
+Segue relatório em anexo 
+
+<u>Favor revisar o documento, complementar as informações faltantes, assiná-lo e encaminhá-lo.<u>
+ 
+**2. Notas Fiscais**  
+
+Em um espaço adequado da Nota Fiscal, devem conter as seguintes informações: 
+ 
+* Prestação de serviços de aplicação do <u>NOME DO PRODUTO</u> <h0 style = "color: #cc0000;">(conforme relatório)</h0> 
+* Parcela <u>N</u> <h0 style = "color: #cc0000;">(número da parcela de faturamento, conforme consta no relatório)</h0> 
+* Referência <u>MÊS/ANO</u> <h0 style = "color: #cc0000;">(mês e ano de referência do faturamento, conforme consta no relatório)</h0> 
+* Horas executadas no período: <u>N</u> <h0 style = "color: #cc0000;">( TOTAL de horas executadas, conforme a tabela do relatório)</h0> 
+* Valor total da nota: <u>R$ VALOR DA NOTA - (VALOR DA NOTA POR EXTENSO)</u> 
+* Dados Bancários da empresa: 
+  + <u>NOME DA EMPRESA,</u> 
+  + <u>TIPO DE CONTA</u> <h0 style = "color: #cc0000;">(PF apenas se for MEI e PJ se não for)</h0>  
+  + <u>BANCO - N° DO BANCO</u>
+  + <u>AG</u>: <h0 style = "color: #cc0000;">(Não esquecer de indicar o dígito, se houver)</h0>  
+  + <u>OPERAÇÃO DA CONTA</u> <h0 style = "color: #cc0000;">(EX:Conta corrente; Conta Poupança)</h0>  : NÚMERO DA CONTA - DÍGITO <h0 style = "color: #cc0000;">(Se houver)</h0>  
+                                                       
+Seguem, também em anexo, os dados da FESPSP **(ANEXO 3)**, para emissão da nota. Lembrando que, caso a empresa tenha sede fora do município de São Paulo, para que não haja retenção do ISS (5%) é necessário que a empresa tenha sido cadastrada na Prefeitura Municipal de São Paulo, exceto se for MEI.
+ 
+Para as empresas optantes pelo SIMPLES NACIONAL, segue o modelo de DECLARAÇÃO PESSOAS JURÍDICAS OPTANTES PELO SIMPLES NACIONAL **(ANEXO 4)**, devendo ser, então, devidamente preenchida, assinada e enviada junto ao(s) Relatório(s) de Atividades e a(s) Nota(s) Fiscal(is) emitida(s). <h0 style = "color: #ff0000;">OBS: A data que deve constar nesta declaração, é a mesma referente ao dia de emissão da Nota Fiscal.</h0>
+ 
+Favor verificar as informações sobre o faturamento autorizado, incluindo  produto, atividades, municípios, datas, horas e autoria. Caso haja alguma dúvida e/ou divergência, favor se manifestar antes da emissão da nota fiscal. 
+ 
+Segue, também em anexo **(ANEXO 5)**, um pequeno esquema para que vocês possam consultar as datas dos fluxos de pagamentos e reembolsos. 
+ 
+<h0 style = "color: #ff0000;">Para finalizar, informo que, caso você tenha algum faturamento pendente, referente a meses passados, ele também pode ser resolvido. Para isso, vou precisar: 
+
+* De **UMA** nota com o valor **TOTAL** de todos os faturamentos pendentes , lembrando que elas devem ser emitidas <h0 style = "color: #ff0000;">**POR PRODUTO**</h0> - mesmo que somando valores de meses diferentes. 
+<u>Ao preencher a descrição da(s) nota(s), você precisará indicar todos os meses que estão sendo faturados na nota. Cada mês se refere a uma parcela, que deverá ser indicada junto ao respectivo valor correspondente àquele mês.</u>
+
+  + **EXEMPLO:** 
+
+      Parcela 1- JANEIRO- R$ 10,00 
+
+      Parcela 2- FEVEREIRO- R$ 20,00 ... 
+
+* **UM** relatório **PARA CADA MÊS** a ser faturado. <u>Para preencher este relatório, basta seguir as orientações e retirar a tabela dos e-mails enviados anteriormente por mim, com o assunto de “Faturamento…”</u>
+ 
+ ATENÇÃO: **Notas e demais documentos devem ser enviados até às 15H do dia 29/09. Documentações enviadas após o prazo estipulado terão de ser desconsideradas e uma nova nota emitida no inicio de Outubro**
+ 
+ 
+
+Peço, por gentileza, que ao responder, responda à todos aqui copiados.
+
+
+Qualquer dúvida estou à disposição. 
+
+Obrigada!
+
+Atenciosamente,
+ 
+ 
+Ágata Lima
+
+
+
